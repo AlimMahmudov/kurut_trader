@@ -14,10 +14,10 @@ import Contact from "./contact/Contact";
 const HomeComponents = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // длительность анимации (мс)
-      once: true, // анимация срабатывает только один раз при скролле
+      duration: 1000,
+      once: true,
       easing: "ease-in-out",
-      offset: 100, // отступ от границы экрана для срабатывания
+      offset: 100,
     });
   }, []);
 
