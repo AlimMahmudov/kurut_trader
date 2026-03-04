@@ -15,13 +15,13 @@ const Footer = () => {
           <Link
             href="/"
             target="_blank"
-            className="hover:text-red-600 transition-colors duration-300"
+            className="hover:text-yellow-500 transition-colors duration-300"
           >
-            Developed by <span className="text-red-600">TwinCore</span>
+            Developed by <span className="text-yellow-500">TwinCore</span>
           </Link>
 
           <p>
-            © 2026 <span className="text-red-600">Sultan</span>
+            © 2026 <span className="text-yellow-500">Sultan</span>
           </p>
         </div>
       </div>
