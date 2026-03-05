@@ -8,7 +8,7 @@ const Hero = () => {
     <section className="relative min-h-screen flex flex-col items-center justify-center bg-black overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
-        <video
+        {/* <video
           autoPlay
           loop
           muted
@@ -16,7 +16,7 @@ const Hero = () => {
           className="w-full h-full object-cover opacity-50" // Прозрачность 50% для глубины
         >
           <source src="/kurut.mp4" type="video/mp4" />
-        </video>
+        </video> */}
         {/* Затемнение и градиент поверх видео */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black z-10"></div>
       </div>
