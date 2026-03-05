@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 
 const strategies = [
   {
@@ -30,16 +29,11 @@ const Strategy = () => {
       id="strategy"
       className="py-32 bg-[#050505] relative overflow-hidden"
     >
-      {/* Фоновый шум или сетка (опционально для стиля терминала) */}
+      {/* Фоновый шум */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
+        <div className="text-center mb-20" data-aos="fade-up">
           <h2 className="text-yellow-500 font-bold tracking-[0.4em] uppercase text-xs mb-4">
             Технология анализа
           </h2>
@@ -49,18 +43,15 @@ const Strategy = () => {
               система
             </span>
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-3 gap-6 lg:gap-10">
           {strategies.map((item, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.2 }}
-              whileHover={{ y: -10 }}
-              className="group relative p-1 bg-gradient-to-b from-white/10 to-transparent hover:from-yellow-500/40 transition-all duration-500"
+              data-aos="fade-up"
+              data-aos-delay={i * 200}
+              className="group relative p-1 bg-gradient-to-b from-white/10 to-transparent hover:from-yellow-500/40 transition-all duration-500 hover:-translate-y-2"
             >
               <div className="relative bg-black h-full p-10 flex flex-col justify-between overflow-hidden">
                 {/* Номер на фоне */}
@@ -86,20 +77,27 @@ const Strategy = () => {
                   </p>
                 </div>
 
-                {/* Индикатор "загрузки" снизу карточки */}
+                {/* Индикатор "загрузки" снизу карточки на CSS */}
                 <div className="mt-12 relative h-[1px] w-full bg-white/5 overflow-hidden">
-                  <motion.div
-                    initial={{ x: "-100%" }}
-                    whileInView={{ x: "0%" }}
-                    transition={{ delay: 0.5 + i * 0.2, duration: 1.5 }}
-                    className="absolute inset-0 bg-yellow-500/50"
+                  <div
+                    className={`absolute inset-0 bg-yellow-500/50 transition-transform duration-[1500ms] ease-out origin-left scale-x-0 group-aos-animate:scale-x-100`}
+                    style={{
+                      transitionDelay: `${700 + i * 200}ms`,
+                    }}
                   />
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
+
+      {/* Глобальный стиль для анимации линии при срабатывании AOS */}
+      <style jsx global>{`
+        [data-aos].aos-animate .group-aos-animate\:scale-x-100 {
+          transform: scaleX(1);
+        }
+      `}</style>
     </section>
   );
 };

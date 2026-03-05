@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import { FaArrowRight, FaCheckCircle } from "react-icons/fa";
 
 const Product = () => {
@@ -11,20 +10,13 @@ const Product = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-yellow-500/5 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+        <div
+          data-aos="zoom-in-up"
+          data-aos-duration="1000"
           className="relative group border border-white/10 bg-gradient-to-br from-white/[0.03] to-transparent backdrop-blur-sm p-8 md:p-16 lg:p-24 overflow-hidden"
         >
-          {/* Анимированная полоса сверху */}
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "100%" }}
-            transition={{ duration: 1.5, delay: 0.5 }}
-            className="absolute top-0 left-0 h-[2px] bg-gradient-to-r from-transparent via-yellow-500 to-transparent"
-          />
+          {/* Анимированная полоса сверху через CSS */}
+          <div className="absolute top-0 left-0 h-[2px] bg-gradient-to-r from-transparent via-yellow-500 to-transparent w-0 group-[.aos-animate]:w-full transition-[width] duration-[1500ms] delay-500"></div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -76,17 +68,13 @@ const Product = () => {
                   $99<span className="text-2xl text-yellow-500">.00</span>
                 </div>
 
-                <motion.button
-                  whileHover={{ scale: 1.05, x: 5 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group relative flex items-center gap-4 bg-yellow-500 text-black font-black py-6 px-12 uppercase tracking-[0.2em] text-sm hover:bg-yellow-400 transition-all shadow-[0_0_30px_rgba(234,179,8,0.3)]"
-                >
+                <button className="group relative flex items-center gap-4 bg-yellow-500 text-black font-black py-6 px-12 uppercase tracking-[0.2em] text-sm hover:bg-yellow-400 transition-all shadow-[0_0_30px_rgba(234,179,8,0.3)] active:scale-95 hover:scale-[1.02]">
                   Вступить в группу
                   <FaArrowRight className="group-hover:translate-x-2 transition-transform" />
-                </motion.button>
+                </button>
               </div>
 
-              {/* Фоновое слово "PROFIT" - теперь более стильное */}
+              {/* Фоновое слово "PROFIT" */}
               <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[12rem] font-black text-white/[0.02] select-none italic tracking-tighter -z-10">
                 PROFIT
               </span>
@@ -95,7 +83,7 @@ const Product = () => {
 
           {/* Декоративные линии сетки */}
           <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/5 pointer-events-none"></div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

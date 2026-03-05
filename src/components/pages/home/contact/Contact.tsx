@@ -1,68 +1,52 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import { FaWhatsapp, FaInstagram, FaTelegramPlane } from "react-icons/fa";
+// Убедись, что твой Button поддерживает стандартные пропсы или используй обычный <button>
 import Button from "@/components/ui/button/Button";
 
 const Contact = () => {
-  // Анимация для текстовых блоков
-  const textVariant = {
-    hidden: { opacity: 0, x: -30 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
-  };
-
   return (
     <section
       id="contact"
       className="bg-black text-white py-24 px-6 md:px-12 relative overflow-hidden"
     >
-      {/* Динамическое свечение на фоне */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.1, 0.15, 0.1],
-        }}
-        transition={{ duration: 10, repeat: Infinity }}
-        className="absolute top-1/4 -left-32 w-96 h-96 bg-yellow-500 rounded-full blur-[150px] -z-10"
-      />
+      {/* Динамическое свечение на фоне через CSS Animation */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-yellow-500/10 rounded-full blur-[150px] -z-10 animate-pulse-slow"></div>
 
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 relative z-10">
-        {/* Левая часть: Инфо с анимацией появления */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="flex flex-col justify-between"
-        >
+        {/* Левая часть: Инфо */}
+        <div className="flex flex-col justify-between">
           <div>
-            <motion.span
-              variants={textVariant}
-              className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block drop-shadow-[0_0_8px_rgba(34,197,94,0.5)]"
+            <span
+              data-aos="fade-right"
+              className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block drop-shadow-[0_0_8px_rgba(234,179,8,0.3)]"
             >
               Live Trading & Signals
-            </motion.span>
+            </span>
 
-            <motion.h2
-              variants={textVariant}
+            <h2
+              data-aos="fade-right"
+              data-aos-delay="100"
               className="text-6xl md:text-8xl font-black italic tracking-tighter leading-none uppercase mb-8"
             >
               ПОЛУЧИТЕ <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-b from-yellow-100 to-yellow-600 drop-shadow-[0_0_15px_rgba(234,179,8,0.4)]">
                 ПРИБЫЛЬ.
               </span>
-            </motion.h2>
+            </h2>
 
-            <motion.p
-              variants={textVariant}
+            <p
+              data-aos="fade-right"
+              data-aos-delay="200"
               className="text-gray-400 text-lg max-w-sm mb-12"
             >
               Готовы выйти на новый уровень? Оставьте сообщение или свяжитесь со
               мной в соцсетях.
-            </motion.p>
+            </p>
           </div>
 
-          <motion.div variants={textVariant} className="space-y-8">
+          <div className="space-y-8" data-aos="fade-up" data-aos-delay="300">
             <div className="group cursor-pointer">
               <span className="text-[10px] uppercase tracking-widest text-gray-500 block mb-2 group-hover:text-yellow-500 transition-colors">
                 My Telegram Channel
@@ -80,48 +64,33 @@ const Contact = () => {
             </div>
 
             <div className="flex gap-8 items-center">
-              <motion.a
-                whileHover={{ y: -3 }}
+              <a
                 href="#"
-                className="flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold hover:text-green-500 transition group"
+                className="flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold hover:text-green-500 transition group hover:-translate-y-1 duration-300"
               >
                 <FaWhatsapp size={16} className="text-yellow-500" /> WhatsApp
-              </motion.a>
-              <motion.a
-                whileHover={{ y: -3 }}
+              </a>
+              <a
                 href="#"
-                className="flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold hover:text-pink-500 transition group"
+                className="flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold hover:text-pink-500 transition group hover:-translate-y-1 duration-300"
               >
                 <FaInstagram size={16} className="text-yellow-500" /> Instagram
-              </motion.a>
+              </a>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
-        {/* Правая часть: Форма с эффектом стекла */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+        {/* Правая часть: Форма */}
+        <div
+          data-aos="zoom-in"
+          data-aos-delay="400"
           className="bg-white/[0.02] backdrop-blur-sm p-8 md:p-12 border border-white/5 relative group hover:border-yellow-500/30 transition-all duration-500"
         >
-          {/* Декоративные свечи графика, которые "пульсируют" */}
+          {/* Свечи графика на CSS */}
           <div className="absolute top-6 right-8 flex gap-1.5 opacity-30">
-            <motion.div
-              animate={{ height: [12, 24, 12] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1 bg-green-500 rounded-full"
-            />
-            <motion.div
-              animate={{ height: [30, 15, 30] }}
-              transition={{ duration: 2.5, repeat: Infinity }}
-              className="w-1 bg-green-500 rounded-full"
-            />
-            <motion.div
-              animate={{ height: [20, 35, 20] }}
-              transition={{ duration: 1.8, repeat: Infinity }}
-              className="w-1 bg-red-500 rounded-full"
-            />
+            <div className="w-1 bg-green-500 rounded-full animate-pulse-h-1" />
+            <div className="w-1 bg-green-500 rounded-full animate-pulse-h-2" />
+            <div className="w-1 bg-red-500 rounded-full animate-pulse-h-3" />
           </div>
 
           <form className="space-y-10">
@@ -159,15 +128,51 @@ const Contact = () => {
               />
             </div>
 
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-              <Button className="w-full py-6 bg-yellow-500 text-black font-black uppercase tracking-[0.3em] text-xs flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(234,179,8,0.2)] hover:bg-yellow-400 transition-all">
+            <div className="active:scale-95 transition-transform duration-200">
+              <Button className="w-full py-6 bg-yellow-500 text-black font-black uppercase tracking-[0.3em] text-xs flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(234,179,8,0.2)] hover:bg-yellow-400 transition-all hover:scale-[1.01]">
                 SEND REQUEST
-                <FaTelegramPlane className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                <FaTelegramPlane className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </Button>
-            </motion.div>
+            </div>
           </form>
-        </motion.div>
+        </div>
       </div>
+
+      <style jsx>{`
+        @keyframes pulse-h {
+          0%,
+          100% {
+            height: 12px;
+          }
+          50% {
+            height: 28px;
+          }
+        }
+        .animate-pulse-h-1 {
+          animation: pulse-h 2s infinite;
+        }
+        .animate-pulse-h-2 {
+          animation: pulse-h 2.5s infinite reverse;
+        }
+        .animate-pulse-h-3 {
+          animation: pulse-h 1.8s infinite;
+        }
+
+        @keyframes pulse-slow {
+          0%,
+          100% {
+            transform: scale(1);
+            opacity: 0.1;
+          }
+          50% {
+            transform: scale(1.2);
+            opacity: 0.15;
+          }
+        }
+        .animate-pulse-slow {
+          animation: pulse-slow 10s infinite ease-in-out;
+        }
+      `}</style>
     </section>
   );
 };
